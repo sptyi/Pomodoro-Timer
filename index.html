@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap"
+			rel="stylesheet"
+		/>
+		<link rel="stylesheet" href="index.css" />
+		<title>Pomodoro Timer</title>
+	</head>
+
+	<body>
+		<h1>Pomodoro Timer</h1>
+		<div id="container">
+			<div id="subContainer1">
+				<div id="workLabel">Work</div>
+				<button id="decreaseWorkTimer" class="btn">-</button>
+				<div id="workTimer">25</div>
+				<button id="increaseWorkTimer" class="btn">+</button>
+			</div>
+			<div id="subContainer2">
+				<div id="breakLabel">Break</div>
+				<button id="decreaseBreakTimer" class="btn">-</button>
+				<div id="breakTimer">5</div>
+				<button id="increaseBreakTimer" class="btn">+</button>
+			</div>
+			<div id="subContainer3">
+				<div id="timer">0:00</div>
+			</div>
+			<div id="subContainer4">
+				<button id="startPauseTimer" class="btn">&#x23F5</button>
+				<button id="stopTimer" class="btn" class="material-icons">&#x25A0</button>
+				<button id="restartTimer" class="btn" class="material-icons">&#x21ba</button>
+			</div>
+		</div>
+
+		<footer>created by <a href="https://github.com/sptyi">sptyi</a></footer>
+
+		<script type="text/javascript" src="index.js"></script>
+	</body>
+</html>

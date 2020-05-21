@@ -1,0 +1,151 @@
+body * {
+	margin: auto;
+	font-family: 'Quicksand', sans-serif;
+	border-radius: 10px;
+	text-shadow: 2px 2px 5px #333;
+	color: black;
+}
+
+body {
+	background-color: #333;
+	text-align: center;
+}
+
+h1 {
+	color: rgb(100, 100, 255);
+	text-shadow: 2px 2px 3px black;
+	font-size: 60px;
+	margin-top: 50px;
+	margin-bottom: 50px;
+}
+
+#container {
+	border: solid rgb(100, 100, 255) 5px;
+	background-color: rgb(100, 100, 255);
+	width: 650px;
+	height: 350px;
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	grid-template-rows: 1fr 2fr 1fr;
+	box-shadow: 5px 5px 10px black;
+}
+
+#subContainer1 {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	grid-template-rows: repeat(2, 1fr);
+	font-size: 30px;
+}
+
+#workLabel {
+	grid-column: 1 / span 3;
+}
+
+#subContainer2 {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	grid-template-rows: 1fr;
+	font-size: 30px;
+}
+
+#breakLabel {
+	grid-column: 1 / span 3;
+}
+
+#subContainer3 {
+	font-size: 40px;
+	grid-column: 1 / span 2;
+	display: grid;
+	grid-template-columns: 1fr;
+	grid-template-rows: 1fr;
+	font-size: 70px;
+}
+
+#subContainer4 {
+	grid-column: 1 / span 2;
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	grid-template-rows: 1fr;
+}
+
+#workTimer {
+	max-width: 100px;
+}
+
+#breakTimer {
+	max-width: 100px;
+}
+
+#decreaseWorkTimer {
+	font-size: 30px;
+	padding-bottom: 7px;
+}
+
+#increaseWorkTimer {
+	font-size: 30px;
+	padding-bottom: 7px;
+}
+
+#decreaseBreakTimer {
+	font-size: 30px;
+	padding-bottom: 7px;
+}
+
+#increaseBreakTimer {
+	font-size: 30px;
+	padding-bottom: 7px;
+}
+
+#startPauseTimer {
+	font-size: 20px;
+	padding-bottom: 5px;
+}
+
+#stopTimer {
+	font-size: 25px;
+	padding-bottom: 7px;
+}
+
+#restartTimer {
+	font-size: 25px;
+}
+
+.btn {
+	outline: none;
+	color: ghostwhite;
+	width: 45px;
+	height: 45px;
+	text-shadow: none;
+	border-radius: 50%;
+	border: none;
+	background-color: black;
+	margin: 0px 25px 0px 25px;
+}
+
+.btn:active {
+	background-color: ghostwhite;
+	color: black;
+	border: none;
+}
+
+footer {
+	display: inline-block;
+	margin-top: 50px;
+	color: rgb(100, 100, 255);
+}
+
+a:link {
+	color: ghostwhite;
+}
+
+a:visited {
+	color: ghostwhite;
+}
+
+a:hover {
+	color: black;
+}
+
+a:active {
+	color: ghostwhite;
+}
