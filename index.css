@@ -4,11 +4,11 @@ body * {
 	border-radius: 10px;
 	text-shadow: 2px 2px 5px ghostwhite;
 	color: black;
+	text-align: center;
 }
 
 body {
 	background-color: #333;
-	text-align: center;
 }
 
 h1 {
@@ -129,7 +129,6 @@ h1 {
 }
 
 footer {
-	display: inline-block;
 	margin-top: 50px;
 	color: rgb(100, 100, 255);
 	text-shadow: 2px 2px 5px black;
@@ -150,4 +149,51 @@ a:hover {
 
 a:active {
 	color: ghostwhite;
+}
+
+@media screen and (max-width: 650px) {
+	h1 {
+		font-size: 40px;
+	}
+	#container {
+		width: 90%;
+		height: 30%;
+	}
+	#subContainer1 {
+		font-size: 20px;
+	}
+	#subContainer2 {
+		font-size: 20px;
+	}
+	#subContainer3 {
+		font-size: 50px;
+	}
+	#decreaseWorkTimer {
+		font-size: 15px;
+	}
+	#increaseWorkTimer {
+		font-size: 15px;
+	}
+	#decreaseBreakTimer {
+		font-size: 15px;
+	}
+	#increaseBreakTimer {
+		font-size: 15px;
+	}
+	#startPauseTimer {
+		font-size: 10px;
+	}
+	#stopTimer {
+		font-size: 15px;
+	}
+	#resetTimer {
+		font-size: 15px;
+	}
+	.btn {
+		width: 25px;
+		height: 25px;
+	}
+	footer {
+		font-size: 15px;
+	}
 }
