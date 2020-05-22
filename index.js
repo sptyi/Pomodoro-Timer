@@ -7,23 +7,24 @@ const decreaseBreakTimer = document.querySelector('#decreaseBreakTimer');
 const increaseBreakTimer = document.querySelector('#increaseBreakTimer');
 const startPauseTimer = document.querySelector('#startPauseTimer');
 const stopTimer = document.querySelector('#stopTimer');
-const restartTimer = document.querySelector('#restartTimer');
+const resetTimer = document.querySelector('#resetTimer');
 
 var timerRunning = false;
 var workTimerActual = workTimer.textContent;
 var breakTimerActual = breakTimer.textContent;
-var timerActual = new Date();
-timerActual.setTime(1500);
-var minutes = timerActual.getTime() / 60;
-var seconds = timerActual.getTime() % 60;
-restart();
+var timerNew = new Date();
+timerNew.setTime(1500);
+timerActual = timer.textContent;
+var minutes = timerNew.getTime() / 60;
+var seconds = timerNew.getTime() % 60;
+reset();
 
 decreaseWorkTimer.addEventListener('click', () => {
 	if (workTimerActual >= 1 && timerRunning == false) {
 		workTimerActual--;
 		workTimer.textContent = workTimerActual;
-		timerActual.setTime(workTimerActual * 60);
-		var minutes = timerActual.getTime() / 60;
+		timerNew.setTime(workTimerActual * 60);
+		var minutes = timerNew.getTime() / 60;
 		timer.textContent = `${minutes} : 00`;
 	}
 });
@@ -32,8 +33,8 @@ increaseWorkTimer.addEventListener('click', () => {
 	if (workTimerActual <= 59 && timerRunning == false) {
 		workTimerActual++;
 		workTimer.textContent = workTimerActual;
-		timerActual.setTime(workTimerActual * 60);
-		var minutes = timerActual.getTime() / 60;
+		timerNew.setTime(workTimerActual * 60);
+		var minutes = timerNew.getTime() / 60;
 		timer.textContent = `${minutes} : 00`;
 	}
 });
@@ -60,8 +61,8 @@ stopTimer.addEventListener('click', () => {
 	end();
 });
 
-restartTimer.addEventListener('click', () => {
-	restart();
+resetTimer.addEventListener('click', () => {
+	reset();
 });
 
 function startPause() {
@@ -71,30 +72,38 @@ function startPause() {
 	} else {
 		startPauseTimer.textContent = '\u23F8';
 		timerRunning = true;
-		while (timer.textContent >= 1) {
-			setInterval(() => {
-				timer.textContent = `${minutes} : ${seconds - 1}`;
-			}, 1000);
-		}
+		runTimer();
 	}
 }
 
 function end() {
+	clearInterval();
 	timerRunning = false;
 	startPauseTimer.textContent = '\u23F5';
-	timerActual.setTime(workTimerActual * 60);
-	var minutes = timerActual.getTime() / 60;
-	var seconds = timerActual.getTime() % 60;
+	timerNew.setTime(workTimerActual * 60);
+	var minutes = timerNew.getTime() / 60;
+	var seconds = timerNew.getTime() % 60;
 	timer.textContent = `${minutes} : ${seconds}`;
 }
 
-function restart() {
+function reset() {
 	timerRunning = false;
-	timerActual.setTime(1500);
-	var minutes = timerActual.getTime() / 60;
+	timerNew.setTime(1500);
+	var minutes = timerNew.getTime() / 60;
 	var seconds = '00';
 	timer.textContent = `${minutes} : ${seconds}`;
 	workTimerActual = 25;
 	breakTimerActual = 5;
 	workTimer.textContent = workTimerActual;
+	breakTimer.textContent = breakTimerActual;
+}
+
+function runTimer() {
+	while (timerRunning) {
+		setInterval(() => {
+			timer.textContent = `${minutes} : ${seconds - 1}`;
+			console.log(timer.textContent);
+		}, 1000);
+	}
+	clearInterval();
 }

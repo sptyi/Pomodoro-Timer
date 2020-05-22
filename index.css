@@ -2,7 +2,7 @@ body * {
 	margin: auto;
 	font-family: 'Quicksand', sans-serif;
 	border-radius: 10px;
-	text-shadow: 2px 2px 5px #333;
+	text-shadow: 2px 2px 5px ghostwhite;
 	color: black;
 }
 
@@ -106,7 +106,7 @@ h1 {
 	padding-bottom: 7px;
 }
 
-#restartTimer {
+#resetTimer {
 	font-size: 25px;
 }
 
@@ -132,10 +132,12 @@ footer {
 	display: inline-block;
 	margin-top: 50px;
 	color: rgb(100, 100, 255);
+	text-shadow: 2px 2px 5px black;
 }
 
 a:link {
 	color: ghostwhite;
+	text-shadow: 2px 2px 5px black;
 }
 
 a:visited {
