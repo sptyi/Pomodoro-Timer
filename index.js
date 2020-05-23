@@ -17,25 +17,27 @@ timerNew.setTime(1500);
 timerActual = timer.textContent;
 var minutes = timerNew.getTime() / 60;
 var seconds = timerNew.getTime() % 60;
+var workOrBreak = 'work';
+var pTimer;
 reset();
 
 decreaseWorkTimer.addEventListener('click', () => {
-	if (workTimerActual >= 1 && timerRunning == false) {
+	if (workTimerActual > 1 && timerRunning == false) {
 		workTimerActual--;
 		workTimer.textContent = workTimerActual;
 		timerNew.setTime(workTimerActual * 60);
-		var minutes = timerNew.getTime() / 60;
-		timer.textContent = `${minutes} : 00`;
+		minutes = timerNew.getTime() / 60;
+		timer.textContent = `${minutes} : ${seconds}`;
 	}
 });
 
 increaseWorkTimer.addEventListener('click', () => {
-	if (workTimerActual <= 59 && timerRunning == false) {
+	if (workTimerActual < 59 && timerRunning == false) {
 		workTimerActual++;
 		workTimer.textContent = workTimerActual;
 		timerNew.setTime(workTimerActual * 60);
-		var minutes = timerNew.getTime() / 60;
-		timer.textContent = `${minutes} : 00`;
+		minutes = timerNew.getTime() / 60;
+		timer.textContent = `${minutes} : ${seconds}`;
 	}
 });
 
@@ -69,28 +71,32 @@ function startPause() {
 	if (timerRunning) {
 		startPauseTimer.textContent = '\u23F5';
 		timerRunning = false;
+		clearInterval(pTimer);
 	} else {
 		startPauseTimer.textContent = '\u23F8';
 		timerRunning = true;
-		runTimer();
+		pTimer = setInterval(runTimer, 1000);
 	}
 }
 
 function end() {
-	clearInterval();
+	clearInterval(pTimer);
 	timerRunning = false;
 	startPauseTimer.textContent = '\u23F5';
 	timerNew.setTime(workTimerActual * 60);
-	var minutes = timerNew.getTime() / 60;
-	var seconds = timerNew.getTime() % 60;
+	seconds = '00';
+	minutes = workTimerActual;
 	timer.textContent = `${minutes} : ${seconds}`;
 }
 
 function reset() {
+	clearInterval(pTimer);
 	timerRunning = false;
+	workOrBreak = 'work';
+	startPauseTimer.textContent = '\u23F5';
 	timerNew.setTime(1500);
-	var minutes = timerNew.getTime() / 60;
-	var seconds = '00';
+	minutes = timerNew.getTime() / 60;
+	seconds = '00';
 	timer.textContent = `${minutes} : ${seconds}`;
 	workTimerActual = 25;
 	breakTimerActual = 5;
@@ -99,11 +105,22 @@ function reset() {
 }
 
 function runTimer() {
-	while (timerRunning) {
-		setInterval(() => {
-			timer.textContent = `${minutes} : ${seconds - 1}`;
-			console.log(timer.textContent);
-		}, 1000);
+	if (timerRunning) {
+		if (seconds > 0) {
+			seconds--;
+			timer.textContent = `${minutes} : ${seconds}`;
+		} else if (seconds == 0 && minutes > 0) {
+			minutes--;
+			seconds = 59;
+			timer.textContent = `${minutes} : ${seconds}`;
+		} else if (seconds == 0 && minutes == 0) {
+			if (workOrBreak == 'work') {
+				minutes = breakTimerActual;
+				workOrBreak = 'break';
+			} else {
+				minutes = workTimerActual;
+				workOrBreak = 'work';
+			}
+		}
 	}
-	clearInterval();
 }
