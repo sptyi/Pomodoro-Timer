@@ -15,17 +15,25 @@
 		<div id="subContainer1">
 			<div id="workLabel">Work</div>
 			<button id="decreaseWorkTimer" class="btn" title="Decrease Work Timer">-</button>
-				<div id="workTimer">25</div>
+				<div id="workTimer" title="Click to type work timer">25</div>
+				<form id="workTimerForm" name="WorkTimerForm">
+					<input type="number" value="25" min="1" max="59" oninput="submitWorkTimerForm">
+					<input type="submit">
+				</form>
 				<button id="increaseWorkTimer" class="btn" title="Increase Work Timer">+</button>
 			</div>
 			<div id="subContainer2">
 				<div id="breakLabel">Break</div>
 				<button id="decreaseBreakTimer" class="btn" title="Decrease Break Timer">-</button>
-				<div id="breakTimer">5</div>
+				<div id="breakTimer" title="Click to type break timer">5</div>
+				<form id="breakTimerForm"  name="breakTimerForm">
+					<input type="number" value="5">
+					<input type="submit">
+				</form>
 				<button id="increaseBreakTimer" class="btn" title="Increase Break Timer">+</button>
 			</div>
 			<div id="subContainer3">
-				<div id="timer"></div>
+				<div id="timer">25 : 00</div>
 			</div>
 			<div id="subContainer4">
 				<button id="startPauseTimer" class="btn" title="Start/Pause Timer">&#x23F5</button>
@@ -34,7 +42,7 @@
 			</div>
 		</div>
 
-		<footer>created by <a href="https://github.com/sptyi">sptyi</a></footer>
+		<footer>created by <a href="https://github.com/sptyi" title="View my GitHub">sptyi</a></footer>
 
 		<script type="text/javascript" src="index.js"></script>
 	</body>

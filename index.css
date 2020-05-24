@@ -8,14 +8,15 @@ body * {
 
 body {
 	background-color: #333;
+	cursor: default;
 }
 
 h1 {
-	color: #6464ff;
+	color: ghostwhite;
 	text-shadow: 2px 2px 10px black;
 	font-size: 60px;
 	margin-top: 50px;
-	margin-bottom: 50px;
+	margin-bottom: 40px;
 }
 
 #container {
@@ -44,7 +45,7 @@ h1 {
 #subContainer2 {
 	display: grid;
 	grid-template-columns: repeat(3, 1fr);
-	grid-template-rows: 1fr;
+	grid-template-rows: repeat(2, 1fr);
 	font-size: 30px;
 	padding-bottom: 10px;
 }
@@ -54,7 +55,6 @@ h1 {
 }
 
 #subContainer3 {
-	font-size: 40px;
 	grid-column: 1 / span 2;
 	display: grid;
 	grid-template-columns: 1fr;
@@ -75,44 +75,61 @@ h1 {
 
 #workTimer {
 	max-width: 100px;
+	cursor: pointer;
+}
+
+#workTimerForm {
+	display: none;
 }
 
 #breakTimer {
 	max-width: 100px;
+	cursor: pointer;
+}
+
+#breakTimerForm {
+	display: none;
 }
 
 #decreaseWorkTimer {
 	font-size: 30px;
 	padding-bottom: 7px;
+	cursor: pointer;
 }
 
 #increaseWorkTimer {
 	font-size: 30px;
 	padding-bottom: 7px;
+	cursor: pointer;
 }
 
 #decreaseBreakTimer {
 	font-size: 30px;
 	padding-bottom: 7px;
+	cursor: pointer;
 }
 
 #increaseBreakTimer {
 	font-size: 30px;
 	padding-bottom: 7px;
+	cursor: pointer;
 }
 
 #startPauseTimer {
 	font-size: 20px;
 	padding-bottom: 5px;
+	cursor: pointer;
 }
 
 #stopTimer {
 	font-size: 25px;
 	padding-bottom: 7px;
+	cursor: pointer;
 }
 
 #resetTimer {
 	font-size: 25px;
+	cursor: pointer;
 }
 
 .btn {
@@ -132,7 +149,7 @@ h1 {
 .btn:active {
 	background-color: ghostwhite;
 	color: black;
-	border: none;
+	transform: scale(0.85);
 }
 
 footer {
@@ -156,6 +173,25 @@ a:hover {
 
 a:active {
 	color: ghostwhite;
+}
+
+input[type='number'] {
+	transform: translate(-15px);
+	width: 50%;
+	background-color: ghostwhite;
+	border: none;
+	font-size: 30px;
+	padding-right: 20px;
+}
+
+input[type='submit'] {
+	transform: translate(40px, -45px);
+	margin-left: -20px;
+	height: 40px;
+	width: 50px;
+	background: blue;
+	color: white;
+	border: none;
 }
 
 @media screen and (max-width: 650px) {
