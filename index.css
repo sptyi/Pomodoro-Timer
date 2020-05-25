@@ -8,14 +8,15 @@ body * {
 
 body {
 	background-color: #333;
+	cursor: default;
 }
 
 h1 {
-	color: #6464ff;
+	color: ghostwhite;
 	text-shadow: 2px 2px 10px black;
 	font-size: 60px;
 	margin-top: 50px;
-	margin-bottom: 50px;
+	margin-bottom: 40px;
 }
 
 #container {
@@ -34,7 +35,6 @@ h1 {
 	grid-template-columns: repeat(3, 1fr);
 	grid-template-rows: repeat(2, 1fr);
 	font-size: 30px;
-	padding-bottom: 10px;
 }
 
 #workLabel {
@@ -44,9 +44,8 @@ h1 {
 #subContainer2 {
 	display: grid;
 	grid-template-columns: repeat(3, 1fr);
-	grid-template-rows: 1fr;
+	grid-template-rows: repeat(2, 1fr);
 	font-size: 30px;
-	padding-bottom: 10px;
 }
 
 #breakLabel {
@@ -54,7 +53,6 @@ h1 {
 }
 
 #subContainer3 {
-	font-size: 40px;
 	grid-column: 1 / span 2;
 	display: grid;
 	grid-template-columns: 1fr;
@@ -74,45 +72,52 @@ h1 {
 }
 
 #workTimer {
-	max-width: 100px;
+	align-self: start;
 }
 
 #breakTimer {
-	max-width: 100px;
+	align-self: start;
 }
 
 #decreaseWorkTimer {
 	font-size: 30px;
 	padding-bottom: 7px;
+	cursor: pointer;
 }
 
 #increaseWorkTimer {
 	font-size: 30px;
 	padding-bottom: 7px;
+	cursor: pointer;
 }
 
 #decreaseBreakTimer {
 	font-size: 30px;
 	padding-bottom: 7px;
+	cursor: pointer;
 }
 
 #increaseBreakTimer {
 	font-size: 30px;
 	padding-bottom: 7px;
+	cursor: pointer;
 }
 
 #startPauseTimer {
 	font-size: 20px;
 	padding-bottom: 5px;
+	cursor: pointer;
 }
 
 #stopTimer {
 	font-size: 25px;
 	padding-bottom: 7px;
+	cursor: pointer;
 }
 
 #resetTimer {
 	font-size: 25px;
+	cursor: pointer;
 }
 
 .btn {
@@ -132,7 +137,7 @@ h1 {
 .btn:active {
 	background-color: ghostwhite;
 	color: black;
-	border: none;
+	transform: scale(0.85);
 }
 
 footer {

@@ -16,35 +16,66 @@ var workTimerActual = workTimer.textContent;
 var breakTimerActual = breakTimer.textContent;
 var timerNew = new Date();
 timerNew.setTime(1500);
-timerActual = timer.textContent;
+var timerActual = timer.textContent;
 var minutes = timerNew.getTime() / 60;
 var seconds = timerNew.getTime() % 60;
 var workOrBreak = 'work';
 var pTimer;
-reset();
+
+breakTimer.addEventListener('click', () => {
+	if (breakTimerInput == false) {
+		breakTimerForm.style.cssText += 'display: none';
+		breakTimer.style.cssText += 'display: unset';
+		breakTimerInput = true;
+	} else if (breakTimerInput == true) {
+		breakTimerForm.style.cssText += 'display: unset';
+		breakTimer.style.cssText += 'display: none';
+		breakTimerInput = false;
+	}
+});
 
 decreaseWorkTimer.addEventListener('click', () => {
 	if (workTimerActual > 1) {
+		decreaseWorkTimer.style.cssText +=
+			'background-color: ghostwhite; color: black; border: none;';
+		setTimeout(() => {
+			decreaseWorkTimer.style.cssText +=
+				'background-color: black; color: ghostwhite; border: none;';
+		}, 100);
 		workTimerActual--;
 		workTimer.textContent = workTimerActual;
 		timerNew.setTime(workTimerActual * 60);
 		minutes = timerNew.getTime() / 60;
+		seconds = '00';
 		timer.textContent = `${minutes} : ${seconds}`;
 	}
 });
 
 increaseWorkTimer.addEventListener('click', () => {
 	if (workTimerActual < 59) {
+		increaseWorkTimer.style.cssText +=
+			'background-color: ghostwhite; color: black; border: none;';
+		setTimeout(() => {
+			increaseWorkTimer.style.cssText +=
+				'background-color: black; color: ghostwhite; border: none;';
+		}, 100);
 		workTimerActual++;
 		workTimer.textContent = workTimerActual;
 		timerNew.setTime(workTimerActual * 60);
 		minutes = timerNew.getTime() / 60;
+		seconds = '00';
 		timer.textContent = `${minutes} : ${seconds}`;
 	}
 });
 
 decreaseBreakTimer.addEventListener('click', () => {
 	if (breakTimerActual > 1) {
+		decreaseBreakTimer.style.cssText +=
+			'background-color: ghostwhite; color: black; border: none;';
+		setTimeout(() => {
+			decreaseBreakTimer.style.cssText +=
+				'background-color: black; color: ghostwhite; border: none;';
+		}, 100);
 		breakTimerActual--;
 		breakTimer.textContent = breakTimerActual;
 	}
@@ -52,24 +83,18 @@ decreaseBreakTimer.addEventListener('click', () => {
 
 increaseBreakTimer.addEventListener('click', () => {
 	if (breakTimerActual < 59) {
+		increaseBreakTimer.style.cssText +=
+			'background-color: ghostwhite; color: black; border: none;';
+		setTimeout(() => {
+			increaseBreakTimer.style.cssText +=
+				'background-color: black; color: ghostwhite; border: none;';
+		}, 100);
 		breakTimerActual++;
 		breakTimer.textContent = breakTimerActual;
 	}
 });
 
 startPauseTimer.addEventListener('click', () => {
-	startPause();
-});
-
-stopTimer.addEventListener('click', () => {
-	end();
-});
-
-resetTimer.addEventListener('click', () => {
-	reset();
-});
-
-function startPause() {
 	if (timerRunning) {
 		startPauseTimer.textContent = '\u23F5';
 		timerRunning = false;
@@ -80,6 +105,14 @@ function startPause() {
 		increaseBreakTimer.disabled = true;
 		subContainer1.style.cssText += 'background-color: #6464ff';
 		subContainer2.style.cssText += 'background-color: #6464ff';
+		decreaseWorkTimer.style.cssText +=
+			'background-color: #6464ff; color: #6464ff';
+		increaseWorkTimer.style.cssText +=
+			'background-color: #6464ff; color: #6464ff';
+		decreaseBreakTimer.style.cssText +=
+			'background-color: #6464ff; color: #6464ff';
+		increaseBreakTimer.style.cssText +=
+			'background-color: #6464ff; color: #6464ff';
 		timer.style.cssText += 'color: black';
 	} else {
 		startPauseTimer.textContent = '\u23F8';
@@ -109,9 +142,9 @@ function startPause() {
 				'box-shadow: none; background-color: green; color: green';
 		}
 	}
-}
+});
 
-function end() {
+stopTimer.addEventListener('click', () => {
 	clearInterval(pTimer);
 	timerRunning = false;
 	startPauseTimer.textContent = '\u23F5';
@@ -134,9 +167,9 @@ function end() {
 	increaseBreakTimer.style.cssText +=
 		'box-shadow: 2px 2px 10px ghostwhite, -2px -2px 10px ghostwhite, -2px 2px 10px ghostwhite, 2px -2px 10px ghostwhite; background-color: black; color: ghostwhite';
 	timer.style.cssText += 'color: black';
-}
+});
 
-function reset() {
+resetTimer.addEventListener('click', () => {
 	clearInterval(pTimer);
 	timerRunning = false;
 	workOrBreak = 'work';
@@ -164,9 +197,14 @@ function reset() {
 	increaseBreakTimer.style.cssText +=
 		'box-shadow: 2px 2px 10px ghostwhite, -2px -2px 10px ghostwhite, -2px 2px 10px ghostwhite, 2px -2px 10px ghostwhite; background-color: black; color: ghostwhite';
 	timer.style.cssText += 'color: black';
-}
+});
 
 function runTimer() {
+	if (minutes < 1 && seconds < 31) {
+		timer.textContent.cssText += 'color: red';
+	} else {
+		timer.textContent.cssText += 'color: black';
+	}
 	if (timerRunning) {
 		decreaseWorkTimer.disabled = true;
 		increaseWorkTimer.disabled = true;
