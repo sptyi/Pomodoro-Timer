@@ -10,9 +10,6 @@ const stopTimer = document.querySelector('#stopTimer');
 const resetTimer = document.querySelector('#resetTimer');
 const subContainer1 = document.querySelector('#subContainer1');
 const subContainer2 = document.querySelector('#subContainer2');
-const workTimerForm = document.querySelector('#workTimerForm');
-const workInput = document.querySelector('.workInput');
-const breakTimerForm = document.querySelector('#breakTimerForm');
 
 var timerRunning = false;
 var workTimerActual = workTimer.textContent;
@@ -23,38 +20,7 @@ var timerActual = timer.textContent;
 var minutes = timerNew.getTime() / 60;
 var seconds = timerNew.getTime() % 60;
 var workOrBreak = 'work';
-var workTimerInput = false;
-var breakTimerInput = false;
-var workFormData = new FormData();
 var pTimer;
-
-function submitWorkTimerForm(e) {
-	if (e.preventDefault) e.preventDefault();
-	console.log(workFormData.get(workInput));
-	workTimer.textContent = workFormData.get(workInput);
-	workTimerToggleForm();
-	return false;
-}
-
-if (workTimerForm.attachEvent) {
-	workTimerForm.attachEvent('submit', submitWorkTimerForm);
-} else {
-	workTimerForm.addEventListener('submit', submitWorkTimerForm);
-}
-
-workTimer.addEventListener('click', workTimerToggleForm);
-
-function workTimerToggleForm() {
-	if (workTimerInput == false) {
-		workTimerForm.style.cssText += 'display: none';
-		workTimer.style.cssText += 'display: unset';
-		workTimerInput = true;
-	} else {
-		workTimerForm.style.cssText += 'display: unset';
-		workTimer.style.cssText += 'display: none';
-		workTimerInput = false;
-	}
-}
 
 breakTimer.addEventListener('click', () => {
 	if (breakTimerInput == false) {
@@ -234,9 +200,7 @@ resetTimer.addEventListener('click', () => {
 });
 
 function runTimer() {
-	if (minutes < 1 && seconds > 30) {
-		timer.style.cssText += 'color: yellow';
-	} else if (minutes < 1 && seconds < 31) {
+	if (minutes < 1 && seconds < 31) {
 		timer.textContent.cssText += 'color: red';
 	} else {
 		timer.textContent.cssText += 'color: black';

@@ -35,7 +35,6 @@ h1 {
 	grid-template-columns: repeat(3, 1fr);
 	grid-template-rows: repeat(2, 1fr);
 	font-size: 30px;
-	padding-bottom: 10px;
 }
 
 #workLabel {
@@ -47,7 +46,6 @@ h1 {
 	grid-template-columns: repeat(3, 1fr);
 	grid-template-rows: repeat(2, 1fr);
 	font-size: 30px;
-	padding-bottom: 10px;
 }
 
 #breakLabel {
@@ -74,21 +72,11 @@ h1 {
 }
 
 #workTimer {
-	max-width: 100px;
-	cursor: pointer;
-}
-
-#workTimerForm {
-	display: none;
+	align-self: start;
 }
 
 #breakTimer {
-	max-width: 100px;
-	cursor: pointer;
-}
-
-#breakTimerForm {
-	display: none;
+	align-self: start;
 }
 
 #decreaseWorkTimer {
@@ -173,25 +161,6 @@ a:hover {
 
 a:active {
 	color: ghostwhite;
-}
-
-input[type='number'] {
-	transform: translate(-15px);
-	width: 50%;
-	background-color: ghostwhite;
-	border: none;
-	font-size: 30px;
-	padding-right: 20px;
-}
-
-input[type='submit'] {
-	transform: translate(40px, -45px);
-	margin-left: -20px;
-	height: 40px;
-	width: 50px;
-	background: blue;
-	color: white;
-	border: none;
 }
 
 @media screen and (max-width: 650px) {
