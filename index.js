@@ -20,6 +20,7 @@ var timerActual = timer.textContent;
 var minutes = timerNew.getTime() / 60;
 var seconds = timerNew.getTime() % 60;
 var workOrBreak = 'work';
+var alarmSentence;
 var pTimer;
 
 breakTimer.addEventListener('click', () => {
@@ -96,6 +97,7 @@ increaseBreakTimer.addEventListener('click', () => {
 
 startPauseTimer.addEventListener('click', () => {
 	if (timerRunning) {
+		document.title = 'Pomodoro timer paused';
 		startPauseTimer.textContent = '\u23F5';
 		timerRunning = false;
 		clearInterval(pTimer);
@@ -145,6 +147,7 @@ startPauseTimer.addEventListener('click', () => {
 });
 
 stopTimer.addEventListener('click', () => {
+	document.title = 'Pomodoro Timer';
 	clearInterval(pTimer);
 	timerRunning = false;
 	startPauseTimer.textContent = '\u23F5';
@@ -170,6 +173,7 @@ stopTimer.addEventListener('click', () => {
 });
 
 resetTimer.addEventListener('click', () => {
+	document.title = 'Pomodoro Timer';
 	clearInterval(pTimer);
 	timerRunning = false;
 	workOrBreak = 'work';
@@ -200,11 +204,6 @@ resetTimer.addEventListener('click', () => {
 });
 
 function runTimer() {
-	if (minutes < 1 && seconds < 31) {
-		timer.textContent.cssText += 'color: red';
-	} else {
-		timer.textContent.cssText += 'color: black';
-	}
 	if (timerRunning) {
 		decreaseWorkTimer.disabled = true;
 		increaseWorkTimer.disabled = true;
@@ -214,8 +213,18 @@ function runTimer() {
 			seconds--;
 			if (seconds < 10) {
 				timer.textContent = `${minutes} : 0${seconds}`;
+				if (workOrBreak == 'work') {
+					document.title = `Work: ${minutes} : 0${seconds}`;
+				} else if (workOrBreak == 'break') {
+					document.title = `Break: ${minutes} : 0${seconds}`;
+				}
 			} else {
 				timer.textContent = `${minutes} : ${seconds}`;
+				if (workOrBreak == 'work') {
+					document.title = `Work: ${minutes} : ${seconds}`;
+				} else if (workOrBreak == 'break') {
+					document.title = `Break: ${minutes} : ${seconds}`;
+				}
 			}
 		} else if (seconds == 0 && minutes > 0) {
 			minutes--;
@@ -225,6 +234,14 @@ function runTimer() {
 			if (workOrBreak == 'work') {
 				minutes = breakTimerActual;
 				workOrBreak = 'break';
+				alarmSentence = "It's time to take a break and relax";
+				if (window.speechSynthesis.getVoices().length == 0) {
+					window.speechSynthesis.addEventListener('voiceschanged', function () {
+						textToSpeech(alarmSentence);
+					});
+				} else {
+					textToSpeech(alarmSentence);
+				}
 				subContainer2.style.cssText += 'background-color: green';
 				subContainer1.style.cssText += 'background-color: #6464ff';
 				decreaseWorkTimer.style.cssText +=
@@ -238,6 +255,14 @@ function runTimer() {
 			} else {
 				minutes = workTimerActual;
 				workOrBreak = 'work';
+				alarmSentence = "It's time to get back to work and focus";
+				if (window.speechSynthesis.getVoices().length == 0) {
+					window.speechSynthesis.addEventListener('voiceschanged', function () {
+						textToSpeech(alarmSentence);
+					});
+				} else {
+					textToSpeech(alarmSentence);
+				}
 				subContainer1.style.cssText += 'background-color: green';
 				subContainer2.style.cssText += 'background-color: #6464ff';
 				decreaseWorkTimer.style.cssText +=
@@ -251,4 +276,25 @@ function runTimer() {
 			}
 		}
 	}
+}
+
+function textToSpeech(alarmSentence) {
+	var available_voices = window.speechSynthesis.getVoices();
+
+	var english_voice = '';
+
+	for (var i = 0; i < available_voices.length; i++) {
+		if (available_voices[i].lang === 'en-US') {
+			english_voice = available_voices[i];
+			break;
+		}
+	}
+	if (english_voice === '') english_voice = available_voices[0];
+
+	var utter = new SpeechSynthesisUtterance();
+	utter.rate = 1;
+	utter.pitch = 0.5;
+	utter.text = alarmSentence;
+	utter.voice = english_voice;
+	window.speechSynthesis.speak(utter);
 }
