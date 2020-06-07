@@ -187,8 +187,14 @@ a:active {
 	#subContainer1 {
 		font-size: 20px;
 	}
+	#workInput {
+		width: 25px;
+	}
 	#subContainer2 {
 		font-size: 20px;
+	}
+	#breakInput {
+		width: 25px;
 	}
 	#subContainer3 {
 		font-size: 50px;
