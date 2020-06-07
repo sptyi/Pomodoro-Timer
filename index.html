@@ -14,15 +14,23 @@
 	<div id="container">
 		<div id="subContainer1">
 			<div id="workLabel">Work</div>
-			<button id="decreaseWorkTimer" class="btn" title="Decrease Work Timer">-</button>
+			<button id="workTimerDecrease" class="btn" title="Decrease Work Timer">-</button>
 				<div id="workTimer">25</div>
-				<button id="increaseWorkTimer" class="btn" title="Increase Work Timer">+</button>
+				<form id="workTimerForm" style="display: none">
+				<input type="number" id="workInput" name="workInput" min="1" max="59" required />
+				<input type="submit" style="display: none" />
+				</form>
+				<button id="workTimerIncrease" class="btn" title="Increase Work Timer">+</button>
 			</div>
 			<div id="subContainer2">
 				<div id="breakLabel">Break</div>
-				<button id="decreaseBreakTimer" class="btn" title="Decrease Break Timer">-</button>
+				<button id="breakTimerDecrease" class="btn" title="Decrease Break Timer">-</button>
 				<div id="breakTimer">5</div>
-				<button id="increaseBreakTimer" class="btn" title="Increase Break Timer">+</button>
+				<form id="breakTimerForm" style="display: none">
+				<input type="number" id="breakInput" name="breakInput" min="1" max="59" required />
+				<input type="submit" style="display: none" />
+				</form>
+				<button id="breakTimerIncrease" class="btn" title="Increase Break Timer">+</button>
 			</div>
 			<div id="subContainer3">
 				<div id="timer">25 : 00</div>

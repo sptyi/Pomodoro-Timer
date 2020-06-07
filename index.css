@@ -41,6 +41,12 @@ h1 {
 	grid-column: 1 / span 3;
 }
 
+#workInput {
+	width: 75px;
+	height: 25px;
+	outline: none;
+}
+
 #subContainer2 {
 	display: grid;
 	grid-template-columns: repeat(3, 1fr);
@@ -50,6 +56,12 @@ h1 {
 
 #breakLabel {
 	grid-column: 1 / span 3;
+}
+
+#breakInput {
+	width: 75px;
+	height: 25px;
+	outline: none;
 }
 
 #subContainer3 {
@@ -73,31 +85,33 @@ h1 {
 
 #workTimer {
 	align-self: start;
+	cursor: pointer;
 }
 
 #breakTimer {
 	align-self: start;
+	cursor: pointer;
 }
 
-#decreaseWorkTimer {
+#workTimerDecrease {
 	font-size: 30px;
 	padding-bottom: 7px;
 	cursor: pointer;
 }
 
-#increaseWorkTimer {
+#workTimerIncrease {
 	font-size: 30px;
 	padding-bottom: 7px;
 	cursor: pointer;
 }
 
-#decreaseBreakTimer {
+#breakTimerDecrease {
 	font-size: 30px;
 	padding-bottom: 7px;
 	cursor: pointer;
 }
 
-#increaseBreakTimer {
+#breakTimerIncrease {
 	font-size: 30px;
 	padding-bottom: 7px;
 	cursor: pointer;
@@ -130,8 +144,7 @@ h1 {
 	border: none;
 	background-color: black;
 	margin: 0px 25px 0px 25px;
-	box-shadow: 2px 2px 10px ghostwhite, -2px -2px 10px ghostwhite,
-		-2px 2px 10px ghostwhite, 2px -2px 10px ghostwhite;
+	box-shadow: 0 0 10px 5px ghostwhite;
 }
 
 .btn:active {
@@ -180,16 +193,16 @@ a:active {
 	#subContainer3 {
 		font-size: 50px;
 	}
-	#decreaseWorkTimer {
+	#workTimerDecrease {
 		font-size: 15px;
 	}
-	#increaseWorkTimer {
+	#workTimerIncrease {
 		font-size: 15px;
 	}
-	#decreaseBreakTimer {
+	#breakTimerDecrease {
 		font-size: 15px;
 	}
-	#increaseBreakTimer {
+	#breakTimerIncrease {
 		font-size: 15px;
 	}
 	#startPauseTimer {
